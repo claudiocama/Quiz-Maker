@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/scripts.js"></script> </head>
+<body>
+    <h1>Quiz</h1>
+    <ul id="question-list">
+        <!-- Visualizza le domande esistenti -->
+        {% for idx in range(num_questions) %}
+            <li>
+                <p>{{ questions[idx].title }}</p> 
+                <input type="hidden" value="{{questions[idx].id}}" />
+                <!-- Lista di radio buttons per selezionare la risposta corretta -->
+                <ul class="correct-option-list">
+                    {% for i in range(4) %}
+                        <li>
+                            <label>
+                                <input type="radio" name="correct_option_{{ idx }}" value="{{ i }}" onchange="answerQuizQuestion('{{ questions[idx].id }}', {{ i }})">
+                                    {{ questions[idx]["options"][i] }}
+                            </label>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

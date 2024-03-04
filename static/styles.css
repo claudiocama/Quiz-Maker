@@ -1,0 +1,111 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.question-list-container {
+    float: right;
+    width: 65%; 
+    padding: 20px;
+}
+
+.add-question-form-container {
+    float: left;
+    width: 28%; /* 8/24 */
+    padding: 20px;
+}
+
+.question-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.question-list li {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.question-list li p {
+    font-weight: bold;
+}
+
+.question-list ul {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.question-list ul li {
+    list-style-type: none;
+}
+
+.add-question-form {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-question-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.add-question-form input[type="text"],
+.add-question-form select {
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-question-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.add-question-form button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button  {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.correct-option-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.correct-option-list li {
+    margin-bottom: 10px;
+}
+
+.correct-option-list label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.correct-option-list input[type="radio"] {
+    margin-right: 5px;
+}

@@ -1,0 +1,70 @@
+<!-- static/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Domande</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/scripts.js"></script> 
+</head>
+<body>
+    <div class="container">
+       
+        <div class="add-question-form-container">
+            <h1>Crea Nuova Domanda</h1>
+            <form id="add-question-form" class="add-question-form">
+                    <label for="question-title">Titolo Domanda:</label>
+                    <input type="text" id="question-title" name="title" required>
+                    <label for="option1">Opzione 1:</label>
+                    <input type="text" id="option1" name="options[]" required>
+                    <label for="option2">Opzione 2:</label>
+                    <input type="text" id="option2" name="options[]" required>
+                    <label for="option3">Opzione 3:</label>
+                    <input type="text" id="option3" name="options[]" required>
+                    <label for="option4">Opzione 4:</label>
+                    <input type="text" id="option4" name="options[]" required>
+                    <label for="correct-option">Opzione Corretta:</label>
+                    <select id="correct-option" name="correct_option" required>
+                        <option value="0">Opzione 1</option>
+                        <option value="1">Opzione 2</option>
+                        <option value="2">Opzione 3</option>
+                        <option value="3">Opzione 4</option>
+                    </select>
+                    <button type="button" onclick="submitForm()">Crea Domanda</button>
+                </form>
+            <h1>Genera un quiz</h1>
+              <form class="add-question-form" id="generate-quiz-form">
+                <label for="quiz-question_count">Numero di domande:</label>
+                <input type="number" id="question_count" name="question_count" required>
+                <button type="button" onclick="generateQuiz()">Genera </button>
+            </form>
+        </div>
+         <div class="question-list-container">
+            <h1>Lista Domande</h1>
+            <ul class="question-list">
+                <!-- Visualizza le domande esistenti -->
+                {% for idx in range(num_questions) %}
+                    <li>
+                        <p>{{ questions[idx].title }}</p>  
+                        <!-- Lista di radio buttons per selezionare la risposta corretta -->
+                        <ul class="correct-option-list">
+                            {% for i in range(4) %}
+                                <li>
+                                    <label>
+                                        <input type="radio" name="correct_option_{{ idx }}" value="{{ i }}" {% if i == questions[idx].correct_option %} checked {% endif %} onchange="updateCorrectOption({{ idx }}, {{ i }})">
+                                             {{ questions[idx]["options"][i] }}
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button" onclick="deleteQuestion({{ idx }})" class="delete-button">Elimina Domanda</button>
+
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
