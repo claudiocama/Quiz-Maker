@@ -1,6 +1,6 @@
 import requests
 import json
-perplexity_api_key = ""
+perplexity_api_key = "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"
 
 
 def explain_wrong_answer(question, wrong_answer, correct_answer):
